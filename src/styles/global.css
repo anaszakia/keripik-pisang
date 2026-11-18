@@ -1,0 +1,187 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+	:root {
+		font-family: "DM Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+	}
+}
+
+.font-display {
+	font-family: "Plus Jakarta Sans", sans-serif;
+}
+
+/* Custom interactive navigation underline */
+.nav-link {
+	position: relative;
+	transition: color 200ms ease;
+}
+
+.nav-link::after {
+	content: "";
+	position: absolute;
+	left: 50%;
+	right: 50%;
+	bottom: -6px;
+	height: 2.5px;
+	border-radius: 9999px;
+	background: #f59e0b;
+	transition: left 240ms cubic-bezier(0.4, 0, 0.2, 1), right 240ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.nav-link:hover::after {
+	left: 0;
+	right: 0;
+}
+
+/* Hero animations & glowing orbs */
+.hero-glow-1 {
+	background: radial-gradient(circle, rgba(245, 158, 11, 0.28) 0%, rgba(245, 158, 11, 0) 70%);
+	filter: blur(40px);
+}
+
+.hero-glow-2 {
+	background: radial-gradient(circle, rgba(239, 68, 68, 0.22) 0%, rgba(239, 68, 68, 0) 70%);
+	filter: blur(50px);
+}
+
+.hero-image {
+	filter: drop-shadow(0 28px 40px rgba(0, 0, 0, 0.35));
+	animation: heroFloating 6s ease-in-out infinite alternate;
+}
+
+@keyframes heroFloating {
+	0% {
+		transform: translateY(0px) scale(1);
+	}
+	100% {
+		transform: translateY(-12px) scale(1.015);
+	}
+}
+
+.float-badge {
+	animation: floatBadge 4.5s ease-in-out infinite;
+}
+
+@keyframes floatBadge {
+	0%, 100% {
+		transform: translateY(0) rotate(-1.5deg);
+	}
+	50% {
+		transform: translateY(-8px) rotate(2deg);
+	}
+}
+
+.float-badge-2 {
+	animation: floatBadge2 5s ease-in-out infinite;
+}
+
+@keyframes floatBadge2 {
+	0%, 100% {
+		transform: translateY(0) rotate(2deg);
+	}
+	50% {
+		transform: translateY(-10px) rotate(-1.5deg);
+	}
+}
+
+/* Reveal elements on scroll */
+.reveal {
+	opacity: 0;
+	transform: translateY(28px);
+	transition: opacity 700ms cubic-bezier(0.16, 1, 0.3, 1), transform 700ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal.is-visible {
+	opacity: 1;
+	transform: translateY(0);
+}
+
+/* Ambient organic wave keyframes */
+@keyframes waveFlowSlow {
+	0% {
+		transform: translateX(0) translateZ(0);
+	}
+	50% {
+		transform: translateX(-25%) translateY(4px) translateZ(0);
+	}
+	100% {
+		transform: translateX(-50%) translateZ(0);
+	}
+}
+
+@keyframes waveFlowMedium {
+	0% {
+		transform: translateX(0) translateZ(0);
+	}
+	50% {
+		transform: translateX(-25%) translateY(-5px) translateZ(0);
+	}
+	100% {
+		transform: translateX(-50%) translateZ(0);
+	}
+}
+
+@keyframes waveFlowFast {
+	0% {
+		transform: translateX(0) translateZ(0);
+	}
+	50% {
+		transform: translateX(-25%) translateY(3px) translateZ(0);
+	}
+	100% {
+		transform: translateX(-50%) translateZ(0);
+	}
+}
+
+.animate-wave-slow {
+	animation: waveFlowSlow 14s ease-in-out infinite;
+	will-change: transform;
+}
+
+.animate-wave-medium {
+	animation: waveFlowMedium 10s ease-in-out infinite;
+	will-change: transform;
+}
+
+.animate-wave-fast {
+	animation: waveFlowFast 7s ease-in-out infinite;
+	will-change: transform;
+}
+
+/* Hide scrollbar for clean horizontal snap sliders on mobile */
+.no-scrollbar::-webkit-scrollbar {
+	display: none;
+}
+.no-scrollbar {
+	-ms-overflow-style: none;
+	scrollbar-width: none;
+}
+
+/* Glassmorphism utility */
+.glass-panel {
+	backdrop-filter: blur(16px);
+	-webkit-backdrop-filter: blur(16px);
+}
+
+/* Card hover glow */
+.card-hover-effect {
+	transition: all 350ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.card-hover-effect:hover {
+	transform: translateY(-6px);
+	box-shadow: 0 20px 40px -15px rgba(245, 158, 11, 0.18);
+}
+
+@media (prefers-reduced-motion: reduce) {
+	html {
+		scroll-behavior: auto !important;
+	}
+	*, *::before, *::after {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+	}
+}

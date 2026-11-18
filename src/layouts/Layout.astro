@@ -1,23 +1,32 @@
 <!doctype html>
-<html lang="en">
+<html lang="id" class="scroll-smooth">
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
+		<link rel="icon" type="image/png" href="/favicon.png" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
+		<meta name="theme-color" content="#f59e0b" />
+		<meta name="description" content="Keripik Pisang 4 Jagoan — camilan pisang renyah, gurih, dan penuh cita rasa autentik." />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Plus+Jakarta+Sans:wght@500;600;700;800;900&display=swap" rel="stylesheet" />
+		<title>Keripik Pisang 4 Jagoan — Sensasi Renyah Premium</title>
+		<script is:inline>
+			// Anti-flicker theme initialization
+			const savedTheme = localStorage.getItem('theme');
+			const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+			if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+				document.documentElement.classList.add('dark');
+			} else {
+				document.documentElement.classList.remove('dark');
+			}
+		</script>
 	</head>
-	<body>
+	<body class="bg-[#fffdf7] text-[#241e16] antialiased transition-colors duration-500 selection:bg-amber-400 selection:text-amber-950 dark:bg-[#0c0d12] dark:text-[#f3f4f6]">
 		<slot />
 	</body>
 </html>
 
 <style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
+	html, body { margin: 0; min-height: 100%; }
 </style>
